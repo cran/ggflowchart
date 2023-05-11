@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Minimal Example</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Minimal Example</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggflowchart)</span></code></pre></div>
+<p>Create a tibble (or data frame) with each row representing an
+edge.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">from =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">to =</span> <span class="fu">c</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;G&quot;</span>))</span></code></pre></div>
+<p>Create the flowchart using the <code>ggflowchart()</code>
+function.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggflowchart</span>(data)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Change the default styling.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggflowchart</span>(data,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">text_colour =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">arrow_colour =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">family =</span> <span class="st">&quot;serif&quot;</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">x_nudge =</span> <span class="fl">0.25</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

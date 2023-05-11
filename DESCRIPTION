@@ -1,0 +1,25 @@
+Package: ggflowchart
+Title: Flowcharts with 'ggplot2'
+Version: 1.0.0
+Authors@R: 
+    person(given = "Nicola",
+           family = "Rennie",
+           role = c("aut", "cre", "cph"),
+           email = "nrennie35@gmail.com")
+Description: Flowcharts can be a useful way to visualise complex processes. This package 
+    uses the layered grammar of graphics of 'ggplot2' to create simple flowcharts.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 3.6)
+Imports: dplyr, igraph, ggplot2, rlang, tibble, tidyr
+Suggests: knitr, rcartocolor, rmarkdown
+RoxygenNote: 7.2.3
+VignetteBuilder: knitr
+Config/Needs/website: nrennie/nrenniepkgdown
+URL: https://nrennie.github.io/ggflowchart/
+NeedsCompilation: no
+Packaged: 2023-05-11 09:01:25 UTC; nrenn
+Author: Nicola Rennie [aut, cre, cph]
+Maintainer: Nicola Rennie <nrennie35@gmail.com>
+Repository: CRAN
+Date/Publication: 2023-05-11 10:10:05 UTC
